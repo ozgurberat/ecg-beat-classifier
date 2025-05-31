@@ -78,11 +78,13 @@ python3 inference.py
 ```
 2. REST API
 
-Start the FastAPI server:
+Start the API server:
 ```
 cd src
 uvicorn api:app --reload
 ```
+This launches a local FastAPI app at ```http://127.0.0.1:8000```, allowing you to send ECG segments using test_client.py.
+
 3. Send a Sample ECG Segment
 ```
 python3 test_client.py
@@ -94,7 +96,7 @@ Prediction: {'label': 'N', 'probability_of_V': 0.01}
 
 ## API Endpoint
 
-POST /predict
+POST ```/predict```
 ```
 {
   "segment": [0.1, 0.03, -0.07, ...]  # ECG segment, 1D float list
@@ -110,4 +112,7 @@ Response:
 
 ## Dataset
 
-This project uses a subset of the [MIT-BIH Arrhythmia Database](https://physionet.org/content/mitdb/1.0.0/) via PhysioNet, preprocessed and saved as filtered_df.pkl.
+This project uses a subset of the [MIT-BIH Arrhythmia Database](https://physionet.org/content/mitdb/1.0.0/) via PhysioNet.
+
+Preprocessed data is stored as:
+```data/filtered_df.pkl```
